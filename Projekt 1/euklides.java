@@ -12,7 +12,7 @@ public class euklides {
         this.p = p;
         this.q = q;
         this.n = p.multiply(q); //p*q
-        this.e = BigInteger.valueOf(2).shiftLeft(16).add(BigInteger.ONE); // e = a = 2^16 + 1;
+        this.e = BigInteger.valueOf(2).pow(16).add(BigInteger.ONE); // e = a = 2^16 + 1; 
         this.m = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE)); //(p-1)(q-1);
         this.d = algorithm(e, m);
     }
@@ -33,15 +33,18 @@ public class euklides {
             v2 = t2;  
             d2 = t3;  
         }   
+        
         BigInteger v = v1;
         BigInteger d = d1;
+
         if (d.equals(BigInteger.ONE)) {
             if (v.compareTo(BigInteger.ZERO) < 0) {
-                v = v.add(m);  // Ensure positive result by adding m
+                v = v.add(m);  
             }
-            return v;  // Return the modular inverse of a mod m
+            return v;  
         } 
         else {
+                System.out.println("No inverse");
             return null;
         }
     }

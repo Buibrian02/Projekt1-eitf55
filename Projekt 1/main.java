@@ -14,22 +14,29 @@ public class main {
 
   public static void main(String[] args) {
     RabinMiller a = new RabinMiller();
-    String filePath = "C:\\Users\\frikk\\Documents\\Primes.txt";
+    String filePath = "C:\\Users\\Butte\\Documents\\Primes.txt";
+    generatePrime generator = new generatePrime();
 
+    int totalGenerated = generator.generatePrimes(filePath, a);
+        System.out.println("Total primes written: " + totalGenerated);
+
+        int totalVerified = 0;
     try {
 
       Scanner scan = new Scanner(new File(filePath));
 
-      while (scan.hasNext()) {
+      while (scan.hasNextBigInteger()) {
         long startTime = System.nanoTime();
         a.isPrime(scan.nextBigInteger(), 20);
         long endTime = System.nanoTime();
-
+        System.out.println("Checked in " + (endTime - startTime) / 1e6 + " ms");
+        totalVerified++;
       }
-
-    } catch (Exception e) {
-
+      scan.close();
+    } 
+      catch (Exception e) {
+          e.printStackTrace();
     }
-
+      System.out.println("Total primes verified: " + totalVerified);
   }
 }

@@ -39,8 +39,10 @@ public class RabinMiller {
 
         for (int i = 0; i < k; i++) {
             // Pick random integer a in the range [2, n-2] k times
-            BigInteger a = BigInteger.valueOf(rand.nextInt(n.intValue() - 2) + 2);
-
+            BigInteger a;
+            do {
+                a = new BigInteger(n.bitLength(), rand); // Generate a random number within bit range
+            } while (a.compareTo(BigInteger.TWO) < 0 || a.compareTo(n.subtract(BigInteger.TWO)) >= 0);
             // x = a^s mod n
             BigInteger x = a.modPow(s, n);
 
