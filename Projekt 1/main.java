@@ -1,13 +1,5 @@
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.math.BigInteger;
-import java.nio.file.*;
-import java.net.URI;
-import java.net.URL;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.Scanner;
 
 public class main {
@@ -16,20 +8,35 @@ public class main {
     RabinMiller a = new RabinMiller();
     String filePath = "C:\\Users\\frikk\\Documents\\Primes.txt";
 
-    try {
+    long start = System.currentTimeMillis();
+    a.isPrime(new BigInteger(
+        "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084171"),
+        20);
+    long end = System.currentTimeMillis();
 
-      Scanner scan = new Scanner(new File(filePath));
+    long diff = end - start;
 
-      while (scan.hasNext()) {
-        long startTime = System.nanoTime();
-        a.isPrime(scan.nextBigInteger(), 20);
-        long endTime = System.nanoTime();
+    System.out.println("Tiden det tog är: " + diff);
 
-      }
-
-    } catch (Exception e) {
-
-    }
+    /*
+     * try {
+     * 
+     * Scanner scan = new Scanner(new File(filePath));
+     * 
+     * while (scan.hasNext()) {
+     * long start = System.nanoTime();
+     * a.isPrime(scan.nextBigInteger(), 20);
+     * long end = System.nanoTime();
+     * 
+     * long diff = end - start;
+     * 
+     * System.out.println("Tiden det tog är: " + diff);
+     * }
+     * 
+     * } catch (Exception e) {
+     * 
+     * }
+     */
 
   }
 }

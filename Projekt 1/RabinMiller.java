@@ -39,7 +39,11 @@ public class RabinMiller {
 
         for (int i = 0; i < k; i++) {
             // Pick random integer a in the range [2, n-2] k times
-            BigInteger a = BigInteger.valueOf(rand.nextInt(n.intValue() - 2) + 2);
+            // BigInteger a = BigInteger.valueOf(rand.nextInt(n.intValue() - 2) + 2);
+            BigInteger a;
+            do {
+                a = new BigInteger(n.bitLength(), rand); // Generate a random number within bit range
+            } while (a.compareTo(BigInteger.TWO) < 0 || a.compareTo(n.subtract(BigInteger.TWO)) >= 0);
 
             // x = a^s mod n
             BigInteger x = a.modPow(s, n);
@@ -54,6 +58,8 @@ public class RabinMiller {
                 // x = a^s mod n
 
                 x = x.modPow(BigInteger.valueOf(2), n);
+
+                // x = a.modPow(BigInteger.valueOf(2).pow(j).multiply(s), n);
 
                 if (x.equals(BigInteger.valueOf(1))) {
                     System.out.println(n + " isComposite");
