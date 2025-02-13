@@ -18,7 +18,7 @@ public class RabinMiller {
         }
 
         if (n.equals(BigInteger.valueOf(1))) {
-            System.out.println(n + " :is Prime");
+            System.out.println(n + " :is not Prime");
             return false;
         }
         if (n.mod(BigInteger.valueOf(2)).equals(BigInteger.valueOf(0))) {

@@ -16,6 +16,20 @@ public class main {
     RabinMiller a = new RabinMiller();
     String filePath = "C:\\Users\\frikk\\Documents\\Primes.txt";
 
-    a.isPrime(BigInteger.valueOf(7), 20);
+    try {
+
+      Scanner scan = new Scanner(new File(filePath));
+
+      while (scan.hasNext()) {
+        long startTime = System.nanoTime();
+        a.isPrime(scan.nextBigInteger(), 20);
+        long endTime = System.nanoTime();
+
+      }
+
+    } catch (Exception e) {
+
+    }
+
   }
 }
