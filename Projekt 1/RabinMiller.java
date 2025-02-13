@@ -8,21 +8,21 @@ public class RabinMiller {
         // input n > 3, an odd integer to be tested for primality
 
         if (n.equals(BigInteger.valueOf(3))) {
-            System.out.println("is Prime");
+            System.out.println(n + " :is Prime");
             return true;
         }
 
         if (n.equals(BigInteger.valueOf(2))) {
-            System.out.println("is Prime");
+            System.out.println(n + " :is Prime");
             return true;
         }
 
         if (n.equals(BigInteger.valueOf(1))) {
-            System.out.println("not Prime");
+            System.out.println(n + " :is Prime");
             return false;
         }
         if (n.mod(BigInteger.valueOf(2)).equals(BigInteger.valueOf(0))) {
-            System.out.println("is Composite");
+            System.out.println(n + " is Composite");
             return false;
         }
 
@@ -46,7 +46,7 @@ public class RabinMiller {
 
             // if x = 1 or x = n-1 then return probably prime
             if (x.equals(BigInteger.valueOf(1)) || x.equals(n.subtract(BigInteger.valueOf(1)))) {
-                System.out.println("probablyPrime");
+                System.out.println(n + " ProbablyPrime");
                 return true;
             }
 
@@ -56,10 +56,10 @@ public class RabinMiller {
                 x = x.modPow(BigInteger.valueOf(2), n);
 
                 if (x.equals(BigInteger.valueOf(1))) {
-                    System.out.println("isComposite");
+                    System.out.println(n + " isComposite");
                     return false;
                 } else if (x.equals(n.subtract(BigInteger.valueOf(1)))) {
-                    System.out.println("ProbablyPrime");
+                    System.out.println(n + " ProbablyPrime");
                     return true;
                 }
             }
